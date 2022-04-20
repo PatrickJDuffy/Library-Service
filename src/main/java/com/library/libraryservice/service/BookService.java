@@ -9,6 +9,8 @@ import com.library.libraryservice.repository.BookRepository;
 import com.library.libraryservice.entity.Book;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -146,5 +148,11 @@ public class BookService {
         }
 
         return new ArrayList<BookMetaData>(uniqueBooks.values());
+    }
+
+    public Book UpdateStatusBorrowed(Long id) {
+        Book book = bookRepository.findByBookID(id);
+        book.setStatus(Status.BORROWED);
+        return bookRepository.save(book);
     }
 }

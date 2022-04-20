@@ -49,11 +49,8 @@ public class BookController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<Book> updateBookPartially(@PathVariable Long id, @RequestBody Book change) {
-
         try {
-            Book book = bookService.findBookByID(id);
-            book.setStatus(change.getStatus());
-            return new ResponseEntity<Book>(bookService.saveBook(book), HttpStatus.OK);
+            return new ResponseEntity<Book>(bookService.UpdateStatusBorrowed(id), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
