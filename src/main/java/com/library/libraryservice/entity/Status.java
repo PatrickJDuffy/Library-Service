@@ -4,4 +4,6 @@ package com.library.libraryservice.entity;
 public enum Status {
     AVAILABLE,
     BORROWED
+
+
 }
