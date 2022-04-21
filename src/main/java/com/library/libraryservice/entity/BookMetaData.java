@@ -2,21 +2,21 @@ package com.library.libraryservice.entity;
 
 import java.util.List;
 
+//Holds the metadata of books,
 public class BookMetaData {
     private String title;
     private String isbn;
     private int noOfAvailable;
-    private int noOfCopies;
-
+    private int noOfBorrowed;
     private List<Long> availableCopies;
     private List<Long> borrowedCopies;
     private List<Author> authors;
 
-    public BookMetaData(String title, String isbn, int noOfAvailable, int noOfCopies, List<Long> availableCopies, List<Long> borrowedCopies, List<Author> authors) {
+    public BookMetaData(String title, String isbn, int noOfAvailable, int noOfBorrowed, List<Long> availableCopies, List<Long> borrowedCopies, List<Author> authors) {
         this.title = title;
         this.isbn = isbn;
         this.noOfAvailable = noOfAvailable;
-        this.noOfCopies = noOfCopies;
+        this.noOfBorrowed = noOfBorrowed;
         this.availableCopies = availableCopies;
         this.borrowedCopies = borrowedCopies;
         this.authors = authors;
@@ -47,23 +47,26 @@ public class BookMetaData {
     public int getNoOfAvailable() {
         return noOfAvailable;
     }
-
     public void setNoOfAvailable(int noOfAvailable) {
         this.noOfAvailable = noOfAvailable;
     }
 
-    public int getNoOfCopies() {
-        return noOfCopies;
+    public int getNoOfBorrowed() {
+        return noOfBorrowed;
     }
-
-    public void setNoOfCopies(int noOfCopies) {
-        this.noOfCopies = noOfCopies;
+    public void setNoOfBorrowed(int noOfBorrowed) {
+        this.noOfBorrowed = noOfBorrowed;
+    }
+    public List<Long> getAvailableCopies() {
+        return availableCopies;
+    }
+    public List<Long> getBorrowedCopies() {
+        return borrowedCopies;
     }
 
     public List<Author> getAuthors() {
         return authors;
     }
-
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
@@ -74,7 +77,7 @@ public class BookMetaData {
                 "title='" + title + '\'' +
                 ", \nisbn='" + isbn + '\'' +
                 ", \nnoOfAvailable=" + noOfAvailable +
-                ", \nnoOfCopies=" + noOfCopies +
+                ", \nnoOfBorrowed=" + noOfBorrowed +
                 ", \nauthors=" + authors +
                 '}';
     }
