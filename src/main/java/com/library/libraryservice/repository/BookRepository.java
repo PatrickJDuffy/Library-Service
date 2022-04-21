@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+//Repository interface to query the JPA
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long >{
-    Book findByBookID(Long bookID);
 
-    List<Book> findByTitle(String title);
+    Book findByBookID(Long bookID);
 
     @Query("select b from Book b inner join b.authors authors where upper(authors.name) = upper(?1)")
     List<Book> findByAuthors_Name(String name);
