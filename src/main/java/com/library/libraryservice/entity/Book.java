@@ -18,6 +18,14 @@ public class Book implements Serializable {
     @JoinTable(name="author_book", joinColumns=@JoinColumn(name="book_id"), inverseJoinColumns=@JoinColumn(name="author_id"))
     private List<Author> authors;
 
+    public Book(Long bookID, String title, String isbn, Status status, List<Author> authors) {
+        this.bookID = bookID;
+        this.title = title;
+        this.isbn = isbn;
+        this.status = status;
+        this.authors = authors;
+
+    }
 
     //Getters + Setters
     public Long getBookID()
