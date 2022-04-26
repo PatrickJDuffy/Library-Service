@@ -23,6 +23,8 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
+    public BookService() {
+    }
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
