@@ -9,7 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
+import java.util.Optional;
+
 
 //BookController to deal with CRUD operations
 @RestController
@@ -22,9 +25,14 @@ public class BookController {
 
     //Retrieves Book object from request body, sends it to the service to persist
     @PostMapping("/")
-    public Book saveBook(@RequestBody Book book ){
+    public ResponseEntity<Book> saveBook(@RequestBody Book book ){
         log.info("Inside saveBook method of BookController Class");
-        return bookService.saveBook(book);
+        Book result = bookService.saveBook(book);
+        if (result != null) {
+            return new ResponseEntity<>(bookService.saveBook(book), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     //Retrieves id from path and the service retrieves the Book by the ID

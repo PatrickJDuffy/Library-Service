@@ -12,6 +12,13 @@ public class Author implements Serializable {
     @Column(name="author_name")
     private String name;
 
+    public Author(){
+
+    }
+    public Author(String name) {
+        this.name = name;
+    }
+
 
     //Getters + Setters
     public Long getAuthorID()

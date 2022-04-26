@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 //Repository interface used to query the JPA
 @Repository
-public interface BorrowRepository extends JpaRepository<Borrow, Long > {
+public interface BorrowRepository extends JpaRepository<Borrow, Long> {
 
     Borrow findByBorrowID(Long borrowID);
 }

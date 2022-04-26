@@ -11,8 +11,11 @@ public class Borrow implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long borrowID;
+    @Column(name = "bookID")
     private Long bookID;
+    @Column(name = "userName")
     private String userName;
+    @Column(name = "borrowDate")
     private LocalDateTime borrowDate;
 
     public Borrow() {
