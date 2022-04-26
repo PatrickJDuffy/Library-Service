@@ -3,6 +3,7 @@ package com.library.libraryservice.service;
 import com.library.libraryservice.entity.Author;
 import com.library.libraryservice.entity.BookMetaData;
 import com.library.libraryservice.entity.Status;
+import com.library.libraryservice.exception.BookAvailabilityException;
 import com.library.libraryservice.repository.BookRepository;
 import com.library.libraryservice.entity.Book;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,10 @@ import java.util.List;
 public class BookService {
     @Autowired
     private BookRepository bookRepository;
+
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     //Sends the Book object to the JPA through the Repository to be persisted
     public Book saveBook(Book book) {
@@ -143,7 +148,7 @@ public class BookService {
         return new ArrayList<BookMetaData>(uniqueBooks.values());
     }
 
-    public Book UpdateStatus(Long id, Status status) {
+    public Book UpdateStatus(Long id, Status status) throws BookAvailabilityException {
         Book book = bookRepository.findByBookID(id);
         book.setStatus(status);
         return bookRepository.save(book);

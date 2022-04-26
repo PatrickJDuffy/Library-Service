@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @SpringBootTest
 class LibraryServiceApplicationTests {
 
-	private Book book;
 	@Test
 	void contextLoads() {
 	}

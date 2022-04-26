@@ -3,6 +3,7 @@ package com.library.libraryservice.service;
 import com.library.libraryservice.entity.Borrow;
 import com.library.libraryservice.entity.Status;
 import com.library.libraryservice.exception.BookAvailabilityException;
+import com.library.libraryservice.exception.InstanceNotFoundException;
 import com.library.libraryservice.repository.BorrowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,13 @@ public class BorrowService {
         }
     }
 
-    public Borrow findBorrowByID(Long borrowID) {
-        return borrowRepository.findByBorrowID(borrowID);
+    public Borrow findBorrowByID(Long borrowID) throws InstanceNotFoundException{
+        Borrow borrow;
+        try{
+            borrow =borrowRepository.findByBorrowID(borrowID);
+        }catch(Exception e){
+            throw new InstanceNotFoundException();
+        }
+        return borrow;
     }
 }
