@@ -16,13 +16,16 @@ A Book has the following attributes:
 - Title
 - Status (AVAILABLE or BORROWED)
 - Authors
+- 
 An Author has the following attributes:
 - Name
+
 A Borrow has the the following attributes:
 - ID (unique identifier)
 - BookID
 - Username (simple string like “JohnDoe”)
 - DateTime (when it was borrowed)
+
 Notes:
 - A Book can have multiple Authors
 - An Author can write multiple Books
